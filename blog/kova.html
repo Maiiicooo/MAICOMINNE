@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT C — Blog</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            color: #222;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        .text-content {
+            flex: 2;
+            background: #fff;
+            padding: 30px;
+        }
+
+        .image-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .image-column img {
+            width: 75%;
+            border-radius: 8px;
+        }
+
+        /* Changelog styling */
+        .changelog {
+            margin-top: 50px;
+            padding: 20px;
+            background: #f7f7f7;
+            border-radius: 8px;
+            border: 1px solid #e2e2e2;
+        }
+
+        .changelog h3 {
+            margin-top: 0;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .changelog-entry {
+            margin-bottom: 22px;
+        }
+
+        .changelog-entry h4 {
+            margin: 0 0 5px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .changelog-entry ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .changelog-entry ul li {
+            margin-bottom: 4px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 850px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .image-column img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text-content">
+            <h2>PROJECT KOVA</h2>
+
+            <p><strong>Update – 08/04/2025:</strong><br><br>
+                Somewhere in the summer of ’24, during a hiking trip, the idea hit
+                me:
+                how cool would it be to have one single app where you can discover new hiking spots, check the weather,
+                and keep
+                track of your adventures? You know the classic meme “bro said he knew a spot” — I wanted to turn that
+                feeling
+                into a real map filled with genuinely amazing places. Add to that a bit of forecasting, some useful data
+                tracking,
+                and a community-driven element where people can submit and review their favourite spots, and suddenly
+                the concept
+                started to look like something I really wanted to build.</p>
+
+            <p>I began sketching out ideas and designs at the end of 2024 and started coding in early 2025. Since then,
+                KOVA
+                has been slowly growing as a side project — not something I work on full-time, but a passion project
+                that keeps
+                evolving whenever I find the time. You can follow the development here on my blog.</p>
+
+            <p>If you’re curious to try it out, you can also check the current beta version. Just keep in mind that it’s
+                still
+                very much in development, so bugs are part of the deal. If you spot anything weird, feel free to let me
+                know —
+                feedback is more than welcome.</p> <a href="https://maiiicooo.github.io/KOVA/"
+                target="_blank">KOVA.beta</a>
+
+            <p>— Maico Minne. Written 05/11/2025</p>
+
+            <!-- CHANGELOG START -->
+
+            <div class="changelog">
+                <h3>Changelog</h3>
+
+                <div class="changelog-entry">
+                    <h4>0.2.1 — 05/11/2025</h4>
+                    <ul>
+                        <li>Improved UI layout for the spot overview</li>
+                        <li>Updated weather API flow for faster loading</li>
+                        <li>Fixed crash when adding new spots on older devices</li>
+                    </ul>
+                </div>
+
+                <div class="changelog-entry">
+                    <h4>0.2.0 — 30/10/2025</h4>
+                    <ul>
+                        <li>Community-submitted hiking spots added</li>
+                        <li>Early beta link released for testers</li>
+                        <li>Map rendering performance improvements</li>
+                    </ul>
+                </div>
+
+                <div class="changelog-entry">
+                    <h4>0.1.5 — 15/10/2025</h4>
+                    <ul>
+                        <li>Added basic weather forecasting</li>
+                        <li>Updated UI colors and typography</li>
+                    </ul>
+                </div>
+
+                <div class="changelog-entry">
+                    <h4>0.1.0 — Initial Beta</h4>
+                    <ul>
+                        <li>First public test build</li>
+                        <li>Basic map with hiking spots</li>
+                        <li>Simple activity tracking added</li>
+                    </ul>
+                </div>
+
+                <p>Full changelog & source on GitHub:<br>
+                    <a href="https://github.com/Maiiicooo/KOVA" target="_blank">github.com/Maiiicooo/KOVA</a>
+                </p>
+            </div>
+
+            <!-- CHANGELOG END -->
+
+        </div>
+
+        <div class="image-column">
+            <img src="/MAICOMINNE-main/images/kova2.jpg" alt="kovaapp"><br>
+            <img src="/MAICOMINNE-main/images/kova3.jpg" alt="kovaapp"><br>
+            <img src="/MAICOMINNE-main/images/kova1.jpg" alt="kovaapp">
+        </div>
+    </div>
+
+</body>
+
+</html>
