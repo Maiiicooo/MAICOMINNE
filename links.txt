@@ -1,0 +1,7 @@
+<a href="https://github.com/Boaztheostrich/PIBZ?tab=readme-ov-file" target="_blank">link</a>
+
+     <h2>other projects</h2>
+     <a href="https://www.instructables.com/Raspberry-Pi-Pico-Thermometer-Clock/" target="_blank">Thermometer clock</a><br>
+     <a href="https://www.hackster.io/coderscafe/fyto-turn-your-plant-into-pet-1373d5" target="_blank">plantPet</a><br>
+     <a href="https://all3dp.com/1/best-raspberry-pi-projects/" target="_blank">list of projects</a><br>
+     <a href="https://github.com/EnriqueNeyra/Aeroq" target="_blank">Aeroq</a>
