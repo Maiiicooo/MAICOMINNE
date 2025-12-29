@@ -1,78 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raspberry Pi Camera – Blog</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        color: #222;
+        line-height: 1.6;
+        margin: 0;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT C — Blog</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      color: #222;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .container {
-      display: flex;
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
-      gap: 40px;
-    }
-
-    .text-content {
-      flex: 2;
-      background: #fff;
-      padding: 30px;
-    }
-
-    .image-column {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      /* duwt foto's bovenaan */
-      gap: 20px;
-      /* ruimte tussen de twee foto's */
-      margin-top: 200px;
-      /* optioneel: duwt ze wat hoger */
-    }
-
-    .image-column img {
-      width: 120%;
-    }
-
-    @media (max-width: 850px) {
       .container {
+        display: flex;
+        max-width: 1200px;
+        margin: auto;
+        padding: 40px 20px;
+        gap: 40px;
+      }
+
+      .text-content {
+        flex: 2;
+        padding: 30px;
+        border-radius: 16px;
+      }
+
+      .image-column {
+        flex: 1;
+        display: flex;
         flex-direction: column;
+        gap: 20px;
       }
 
       .image-column img {
         width: 100%;
+        object-fit: cover;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       }
-    }
-  </style>
-</head>
 
-<body>
+      @media (max-width: 850px) {
+        .container {
+          flex-direction: column;
+        }
 
-  <div class="container">
-    <div class="text-content">
-      <h2>PROJECT C</h2>
+        .image-column {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
 
-      <p><strong>Update – 08/04/2025:</strong> Curently i am working on a Raspberri Pi project. More info coming soon</p>
-      <p>— Maico Minne. Written 05/11/2025 </p>
+        .image-column img {
+          width: calc(50% - 5px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="text-content">
+        <h2>Project C.</h2>
+        <p>
+          <strong>Update – 2025:</strong> A simple DIY camera built with a
+          Raspberry Pi 4, a Pi Camera, and a cheap display from Amazon.<br />
+          <span style="color: #888">
+            It’s not fancy, not polished, but honestly one of my favorite
+            projects so far.
+          </span>
+        </p>
+
+        <h3>Intro</h3>
+        <p>
+          This is basically just a photo camera. No cloud, no AI, no smart
+          features. It just takes photos when you press a button.
+        </p>
+
+        <p>
+          I wrote a small script in Python using Thonny, connected a Raspberry
+          Pi Camera, added a small inexpensive display, and that’s it. But
+          somehow… it turned out way cooler than I expected.
+        </p>
+
+        <h3>Why I Built It</h3>
+        <p>
+          I saw a lot of people online building similar Raspberry Pi cameras,
+          but almost all of them needed a keyboard connected to trigger the
+          photo.
+        </p>
+
+        <p>
+          To me, that completely killed the experience. Carrying a keyboard
+          around just to take a picture felt wrong.
+        </p>
+
+        <p>
+          I wanted something that actually feels like a real camera. Press a
+          button → take a photo.
+        </p>
+
+        <h3>The Button</h3>
+        <p>
+          Instead of using a keyboard, I soldered a mechanical keyboard switch
+          directly to the GPIO pins of the Raspberry Pi.
+        </p>
+
+        <p>
+          That clicky mechanical switch is incredibly satisfying. Pressing it
+          and instantly hearing the camera trigger never gets old.
+        </p>
+
+        <p>
+          It’s a tiny detail, but it completely changes how the project feels.
+        </p>
+
+        <h3>How It Works</h3>
+        <ul>
+          <li>Raspberry Pi 4</li>
+          <li>Raspberry Pi Camera Module</li>
+          <li>6mm camera lens</li>
+          <li>Cheap Amazon display</li>
+          <li>Python script written in Thonny</li>
+          <li>Mechanical keyboard switch wired to GPIO</li>
+        </ul>
+
+        <p>
+          The script listens for a GPIO input. When the button is pressed, it
+          captures a photo and saves it. No menus, no UI, no distractions.
+        </p>
+
+        <h3>Photo Quality</h3>
+        <p>
+          What surprised me the most is how sharp the photos actually are. For
+          such a simple setup, the image quality is way better than I expected.
+        </p>
+
+        <p>
+          It proves that you don’t need a complex setup to get good results.
+        </p>
+
+        <h3>Final Thoughts</h3>
+        <p>
+          This project isn’t meant to compete with real cameras. It’s just
+          something I built because I thought it would be cool. If you want to
+          check out my script for the button check it here. <br />
+          <a href="https://github.com/Maiiicooo/RaspPIcamera" target="_blank"
+            >https://github.com/Maiiicooo/RaspPIcamera</a
+          >
+        </p>
+
+        <p>And honestly? It really is.</p>
+
+        <p>
+          Pressing a physical button, hearing that click, and knowing the photo
+          was taken by something you built yourself is incredibly satisfying.
+        </p>
+
+        <p>— Maico Minne</p>
+      </div>
+
+      <div class="image-column">
+        <img
+          src="images/cam3.jpeg"
+          alt="Photo taken with the Raspberry Pi camera"
+        />
+        <img src="images/cam4.jpeg" alt="Raspberry Pi camera build" />
+        <img
+          src="images/cam2.jpeg"
+          alt="Photo taken with the Raspberry Pi camera"
+        />
+        <img src="images/cam1.jpeg" alt="Raspberry Pi camera build" />
+      </div>
     </div>
-<!-- 
-    <div class="image-column">
-      <img src="/MAICOMINNE-main/images/camera1.jpg" alt="Me after finishing the Torhout Half Marathon with my medal"><br>
-      <img src="/MAICOMINNE-main/images/camera2.jpg"
-        alt="Me after finishing the Torhout Half Marathon with my medal"><br>
-      <img src="/MAICOMINNE-main/images/camera3.jpg" alt="Me after finishing the Torhout Half Marathon with my medal">
-    </div>
-  </div>
- -->
-</body>
-
+  </body>
 </html>
