@@ -31,7 +31,6 @@
       padding: 0 16px;
     }
 
-    
     .term{
       border: 1px solid var(--rule);
       border-radius: 14px;
@@ -52,16 +51,31 @@
 
     .dots{
       display:flex;
-      gap:6px;
+      gap:7px;
       align-items:center;
     }
 
+    /* mac-style traffic lights */
     .dot{
-      width:10px;
-      height:10px;
-      border-radius:999px;
-      border:1px solid #cfcfcf;
-      background:#ffffff;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      display: inline-block;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.55),
+        inset 0 -1px 0 rgba(0,0,0,0.12);
+    }
+    .dot.red{
+      background: #ff5f57;
+      border: 1px solid #e0443e;
+    }
+    .dot.yellow{
+      background: #febc2e;
+      border: 1px solid #dea123;
+    }
+    .dot.green{
+      background: #28c840;
+      border: 1px solid #1ea832;
     }
 
     .title{
@@ -86,16 +100,9 @@
       font-size: 13px;
     }
 
-    .prompt{
-      color: var(--muted);
-    }
+    .prompt{ color: var(--muted); }
+    .cmd{ color: var(--fg); font-weight: 700; }
 
-    .cmd{
-      color: var(--fg);
-      font-weight: 700;
-    }
-
-    
     .list{
       border-top: 1px solid var(--rule);
     }
@@ -125,7 +132,6 @@
       min-width: 0;
     }
 
-    
     .marker{
       width: 18px;
       flex: 0 0 auto;
@@ -175,7 +181,6 @@
       flex-wrap: wrap;
     }
 
-    /* mobile */
     @media (max-width: 720px){
       .row{
         grid-template-columns: 1fr 90px;
@@ -197,7 +202,9 @@
     <div class="term">
       <div class="bar">
         <div class="dots" aria-hidden="true">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
         </div>
         <div class="title">files  ~/blog</div>
         <div style="width:42px;"></div>
