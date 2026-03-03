@@ -1,54 +1,113 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>About</title>
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* Verticaal centreren */
-        align-items: center; /* Horizontaal centreren */
-        text-align: center;
-        font-family: sans-serif;
-      }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About</title>
 
-      img {
-        align-content: center;
-        width: 350px;
-        height: 350px;
-        margin-bottom: 40px;
-      }
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#0a0a0a;
+      --muted:#6b6b6b;
+      --rule:#e6e6e6;
+      --panel:#fafafa;
+    }
 
-      p {
-        max-width: 1500px;
-        line-height: 1.5;
-      }
+    *{ box-sizing:border-box; }
 
+    html, body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif; 
+      line-height:1.55;
+    }
 
-      .back-link {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  text-decoration: none;
-  font-family: sans-serif;
-}
+    .page{
+      max-width: 900px;
+      margin: 34px auto 60px;
+      padding: 0 16px;
+      text-align: center;
+    }
 
+    
+    .topbar{
+      display:flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 12px 0;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
 
-    </style>
-  </head>
+    .title{
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
 
-  <header>
-      <body>
-        <a href="index.html" class="back-link">
-          <span class="folder-icon">📁</span>../back to index
-        </a>
-  </header>
-  
-  <body>
+    /* .back-link{
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0,0,0,.35);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .back-link:hover{
+      border-bottom-style: solid;
+    } */
+
+    img{
+      width: 340px;
+      max-width: 90vw;
+      height: auto;
+      border: 1px solid var(--rule);
+      background: var(--panel);
+      padding: 8px;             
+      margin: 0 auto 18px;
+      display:block;
+    }
+
+    .caption{
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+    }
+
+    p{
+      margin: 0 auto;
+      max-width: 70ch;          
+      text-align: left;          
+      font-size: 16px;
+    }
+
+    .rule{
+      height:1px;
+      background: var(--rule);
+      margin: 22px auto;
+      max-width: 70ch;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="topbar">
+      <a href="index.html" class="back-link">
+        <span class="folder-icon">📁</span>../back to index
+      </a>
+    </div>
 
     <img src="assets/photos/babyme.jpg" alt="Baby photo of Maico Minne" />
+    <div class="caption">babyme.jpg — archived photo</div>
+
+    <div class="rule"></div>
+
     <p>
       Maico Minne is a passionate self-taught software enthusiast who studied
       Software Engineering at Howest University of Applied Sciences in Bruges.
@@ -62,5 +121,6 @@
       projects. He is also pursuing his entrepreneurial goals as an independent
       sandblasting specialist.
     </p>
-  </body>
+  </div>
+</body>
 </html>
