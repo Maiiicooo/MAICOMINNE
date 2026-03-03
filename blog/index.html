@@ -9,9 +9,9 @@
     :root{
       --bg:#ffffff;
       --fg:#0a0a0a;
-      --muted:#666;
+      --muted:#6b6b6b;
       --rule:#e6e6e6;
-      --chip:#f4f4f4;
+      --panel:#fafafa;
     }
 
     *{ box-sizing:border-box; }
@@ -21,36 +21,78 @@
       padding:0;
       background:var(--bg);
       color:var(--fg);
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif; 
-      line-height:1.35;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      line-height:1.45;
     }
 
-    
     .page{
       max-width: 920px;
-      margin: 38px auto 46px;
+      margin: 28px auto 48px;
       padding: 0 16px;
     }
 
     
-    .header{
-      border-top: 2px solid var(--fg);
-      border-bottom: 1px solid var(--fg);
-      padding: 14px 0 12px;
-      margin-bottom: 16px;
+    .term{
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    .header h1{
-      margin:0;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
+    .bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--panel);
     }
 
-    .sub{
-      margin-top: 6px;
+    .dots{
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      border:1px solid #cfcfcf;
+      background:#ffffff;
+    }
+
+    .title{
       font-size: 12px;
       color: var(--muted);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      flex:1;
+      text-align:center;
+    }
+
+    .content{
+      padding: 14px 14px 10px;
+    }
+
+    .promptline{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+
+    .prompt{
+      color: var(--muted);
+    }
+
+    .cmd{
+      color: var(--fg);
+      font-weight: 700;
     }
 
     
@@ -68,12 +110,11 @@
     }
 
     .row.head{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12px;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: .12em;
-      padding: 8px 0;
+      font-size: 12px;
+      padding-top: 8px;
       border-bottom: 1px solid var(--fg);
     }
 
@@ -86,19 +127,19 @@
 
     
     .marker{
-      width: 10px;
+      width: 18px;
       flex: 0 0 auto;
       color: var(--muted);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      text-align:center;
     }
 
-    .tag{
-      font-size: 11px;
+    .type{
+      color: var(--muted);
+      font-size: 12px;
       border: 1px solid var(--rule);
-      background: var(--chip);
       padding: 2px 8px;
       border-radius: 999px;
-      color: var(--muted);
+      background: var(--panel);
       flex: 0 0 auto;
     }
 
@@ -106,32 +147,35 @@
       color: var(--fg);
       text-decoration: none;
       border-bottom: 1px dotted rgba(0,0,0,.35);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display:inline-block;
+      max-width: 100%;
     }
+
     a:hover{
       border-bottom-style: solid;
     }
 
-    .size, .date{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 13px;
+    .size,.date{
       color: var(--muted);
+      font-size: 13px;
       text-align: right;
       white-space: nowrap;
     }
 
     .footer{
-      margin-top: 14px;
-      padding-top: 12px;
-      border-top: 1px solid var(--fg);
+      padding: 10px 14px 14px;
+      color: var(--muted);
+      font-size: 12px;
       display:flex;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      font-size: 12px;
-      color: var(--muted);
     }
 
-    
+    /* mobile */
     @media (max-width: 720px){
       .row{
         grid-template-columns: 1fr 90px;
@@ -143,83 +187,83 @@
       .size{ grid-area:size; }
       .date{ grid-area:date; text-align:left; }
       .row.head{ display:none; }
+      .title{ text-align:right; }
     }
   </style>
 </head>
 
 <body>
   <div class="page">
-
-    <div class="list" role="table" aria-label="blog index">
-      <div class="row head">
-        <div>Filename</div>
-        <div style="text-align:right;">Size</div>
-        <div style="text-align:right;">Last Modified</div>
+    <div class="term">
+      <div class="bar">
+        <div class="dots" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <div class="title">files  ~/blog</div>
+        <div style="width:42px;"></div>
       </div>
 
-      <div class="row">
-        <div class="name">
-          <span class="marker">..</span>
-          <span class="tag">UP</span>
-          <a href="../">../index</a>
+      <div class="content">
+        <div class="promptline">
+          <span class="prompt">maicowave@site</span>
+          <span class="prompt">:</span>
+          <span class="prompt">~/blog</span>
+          <span class="cmd">$ ls -la</span>
         </div>
-        <div class="size">-</div>
-        <div class="date">02-Apr-2025 15:24</div>
+
+        <div class="list" role="table" aria-label="blog index">
+          <div class="row head">
+            <div>Filename</div>
+            <div style="text-align:right;">Size</div>
+            <div style="text-align:right;">Last Modified</div>
+          </div>
+
+          <div class="row">
+            <div class="name">
+              <span class="marker">↩</span>
+              <span class="type">UP</span>
+              <a href="../">../index</a>
+            </div>
+            <div class="size">-</div>
+            <div class="date">02-Apr-2025 15:24</div>
+          </div>
+
+          <div class="row">
+            <div class="name">
+              <span class="marker">▣</span>
+              <span class="type">DIR</span>
+              <a href="project.html">projects</a>
+            </div>
+            <div class="size">-</div>
+            <div class="date">02-Apr-2025 15:24</div>
+          </div>
+
+          <div class="row">
+            <div class="name">
+              <span class="marker">•</span>
+              <span class="type">FILE</span>
+              <a href="marathon.html">ProjectM.html</a>
+            </div>
+            <div class="size">2 kB</div>
+            <div class="date">14-Jul-2024 15:26</div>
+          </div>
+
+          <div class="row">
+            <div class="name">
+              <span class="marker">•</span>
+              <span class="type">FILE</span>
+              <a href="photos1.html">photos1.html</a>
+            </div>
+            <div class="size">0.5 kB</div>
+            <div class="date">02-Apr-2025 15:26</div>
+          </div>
+
+        </div>
       </div>
 
-      <div class="row">
-        <div class="name">
-          <span class="marker">/</span>
-          <span class="tag">DIR</span>
-          <a href="project.html">projects</a>
-        </div>
-        <div class="size">-</div>
-        <div class="date">02-Apr-2025 15:24</div>
+      <div class="footer">
+        <div>last updated: 02-Apr-2025</div>
       </div>
-
-      <!-- <div class="row">
-        <div class="name">
-          <span class="marker">·</span>
-          <span class="tag">FILE</span>
-          <a href="books.html">Books.html</a>
-        </div>
-        <div class="size">2 kB</div>
-        <div class="date">14-Jul-2024 15:26</div>
-      </div> -->
-
-      <div class="row">
-        <div class="name">
-          <span class="marker">·</span>
-          <span class="tag">FILE</span>
-          <a href="marathon.html">ProjectM.html</a>
-        </div>
-        <div class="size">2 kB</div>
-        <div class="date">14-Jul-2024 15:26</div>
-      </div>
-
-      <div class="row">
-        <div class="name">
-          <span class="marker">·</span>
-          <span class="tag">FILE</span>
-          <a href="photos1.html">photos1.html</a>
-        </div>
-        <div class="size">0.5 kB</div>
-        <div class="date">02-Apr-2025 15:26</div>
-      </div>
-
-      <!-- <div class="row">
-        <div class="name">
-          <span class="marker">·</span>
-          <span class="tag">FILE</span>
-          <a href="doom.html">emacsd.html</a>
-        </div>
-        <div class="size">3 kB</div>
-        <div class="date">28-Mrt-2025 19:44</div>
-      </div>
-    </div> -->
-
-    <div class="footer">
-      <div>last updated: 02-Apr-2025</div>
     </div>
   </div>
 </body>
