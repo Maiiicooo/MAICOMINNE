@@ -1,196 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of /blog</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            line-height: 1.5;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-            background-color: #f5f5f5;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>files</title>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#0a0a0a;
+      --muted:#666;
+      --rule:#e6e6e6;
+      --chip:#f4f4f4;
+    }
 
-        .header {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-        }
+    *{ box-sizing:border-box; }
 
-        h1 {
-            font-size: 24px;
-            margin: 0;
-            font-weight: 500;
-            color: #333;
-        }
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      line-height:1.35;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    .page{
+      max-width: 920px;
+      margin: 38px auto 46px;
+      padding: 0 16px;
+    }
 
-        th {
-            text-align: left;
-            padding: 12px 20px;
-            border-bottom: 1px solid #eee;
-            font-weight: 500;
-            color: #333;
-            background-color: #fafafa;
-        }
+    .header{
+      border-top: 2px solid var(--fg);
+      border-bottom: 1px solid var(--fg);
+      padding: 14px 0 12px;
+      margin-bottom: 16px;
+    }
 
-        td {
-            padding: 12px 20px;
-            border-bottom: 1px solid #eee;
-        }
+    .header h1{
+      margin:0;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
 
-        tr:hover {
-            background-color: #f9f9f9;
-        }
+    .sub{
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
 
-        a {
-            color: #0366d6;
-            text-decoration: none;
-        }
+    .list{
+      border-top: 1px solid var(--rule);
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 110px 170px;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
 
-        .icon {
-            width: 20px;
-            margin-right: 5px;
-            vertical-align: middle;
-        }
+    .row.head{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--fg);
+    }
 
-        .file-icon {
-            color: #8e8e93;
-            font-size: 16px;
-            margin-right: 5px;
-        }
+    .name{
+      display:flex;
+      align-items: baseline;
+      gap: 10px;
+      min-width: 0;
+    }
 
-        .folder-icon {
-            color: #0366d6;
-            font-size: 16px;
-            margin-right: 5px;
-        }
+    .marker{
+      width: 10px;
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
 
-        .parent {
-            display: flex;
-            align-items: center;
-        }
+    .tag{
+      font-size: 11px;
+      border: 1px solid var(--rule);
+      background: var(--chip);
+      padding: 2px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
 
-        .footer {
-            padding: 10px 20px;
-            color: #6e6e6e;
-            font-size: 12px;
-            border-top: 1px solid #eee;
-        }
-    </style>
+    a{
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0,0,0,.35);
+    }
+    a:hover{
+      border-bottom-style: solid;
+    }
+
+    .size, .date{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .footer{
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--fg);
+      display:flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px){
+      .row{
+        grid-template-columns: 1fr 90px;
+        grid-template-areas:
+          "name size"
+          "date date";
+      }
+      .name{ grid-area:name; }
+      .size{ grid-area:size; }
+      .date{ grid-area:date; text-align:left; }
+      .row.head{ display:none; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Index of /projects</h1>
+  <div class="page">
+
+    <div class="list" role="table" aria-label="projects index">
+      <div class="row head">
+        <div>Filename</div>
+        <div style="text-align:right;">Size</div>
+        <div style="text-align:right;">Last Modified</div>
+      </div>
+
+      <div class="row">
+        <div class="name">
+          <span class="marker">..</span>
+          <span class="tag">UP</span>
+          <a href="../">../index</a>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 60%">Filename</th>
-                    <th style="width: 15%">Size</th>
-                    <th style="width: 25%">Last Modified</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <a href="../" class="parent">
-                            <span class="folder-icon">📁</span> ../index
-                        </a>
-                    </td>
-                    <td>-</td>
-                    <td>02-Apr-2025 15:24</td>
-                </tr>
+        <div class="size">-</div>
+        <div class="date">02-Apr-2025 15:24</div>
+      </div>
 
-                <tr>
-                    <td>
-                        <a href="index.html" class="parent">
-                            <span class="folder-icon">📁</span> blog
-                        </a>
-                    </td>
-                    <td>-</td>
-                    <td>02-Apr-2025 15:24</td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <a href="kova.html">
-                            <span class="file-icon">📄</span> kova.html
-                        </a>
-                    </td>
-                    <td>6 kB</td>
-                    <td>13-Oct-2025 19:44</td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <a href="widget.html">
-                            <span class="file-icon">📄</span> widget.html
-                        </a>
-                    </td>
-                    <td>0.5 kB</td>
-                    <td>02-Apr-2025 03:26</td>
-                </tr>
-
-
-                <tr>
-                    <td>
-                        <a href="camera.html">
-                            <span class="file-icon">📄</span> camera.html
-                        </a>
-                    </td>
-                    <td>3 kB</td>
-                    <td>28-Dec-2025 19:11</td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <a href="clock.html">
-                            <span class="file-icon">📄</span> clock.html
-                        </a>
-                    </td>
-                    <td>3 kB</td>
-                    <td>29-Dec-2025 09:44</td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <a href="hard.html">
-                            <span class="file-icon">📄</span> 20DH.html
-                        </a>
-                    </td>
-                    <td>2 kB</td>
-                    <td>18-Nov-2025 11:23</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="footer">
-            last updated: 18-Nov-2025
+      <div class="row">
+        <div class="name">
+          <span class="marker">/</span>
+          <span class="tag">DIR</span>
+          <a href="index.html">blog</a>
         </div>
+        <div class="size">-</div>
+        <div class="date">02-Apr-2025 15:24</div>
+      </div>
+
+      <div class="row">
+        <div class="name">
+          <span class="marker">·</span>
+          <span class="tag">FILE</span>
+          <a href="kova.html">kova.html</a>
+        </div>
+        <div class="size">6 kB</div>
+        <div class="date">13-Oct-2025 19:44</div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="name">
+          <span class="marker">·</span>
+          <span class="tag">FILE</span>
+          <a href="widget.html">widget.html</a>
+        </div>
+        <div class="size">0.5 kB</div>
+        <div class="date">02-Apr-2025 03:26</div>
+      </div> -->
+
+      <div class="row">
+        <div class="name">
+          <span class="marker">·</span>
+          <span class="tag">FILE</span>
+          <a href="camera.html">camera.html</a>
+        </div>
+        <div class="size">3 kB</div>
+        <div class="date">28-Dec-2025 19:11</div>
+      </div>
+
+      <div class="row">
+        <div class="name">
+          <span class="marker">·</span>
+          <span class="tag">FILE</span>
+          <a href="clock.html">clock.html</a>
+        </div>
+        <div class="size">3 kB</div>
+        <div class="date">29-Dec-2025 09:44</div>
+      </div>
+
+      <div class="row">
+        <div class="name">
+          <span class="marker">·</span>
+          <span class="tag">FILE</span>
+          <a href="hard.html">20DH.html</a>
+        </div>
+        <div class="size">2 kB</div>
+        <div class="date">18-Nov-2025 11:23</div>
+      </div>
     </div>
+
+    <div class="footer">
+      <div>last updated: 18-Nov-2025</div>
+    </div>
+  </div>
 </body>
-
-
 </html>
