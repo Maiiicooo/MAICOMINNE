@@ -1,77 +1,141 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="windows-1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MAICO MINNE</title>
-    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon" />
 
     <style>
-        body {
-            top: 0;
-            left: 0;
-            width: 99%;
-            height: 97%;
-            position: absolute;
-            display: table;
-        }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 
-        p {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center
-        }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
 
-        #timezone * {
-            text-decoration: none;
-        }
+      .wrap {
+        width: 100%;
+        max-width: 900px;
+        padding: 24px 16px;
+      }
+
+      h1 {
+        margin: 0 0 18px 0;
+        font-size: 56px;
+        font-style: italic;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      .photo {
+        width: 560px;
+        max-width: 92vw;
+        height: auto;
+        display: block;
+        margin: 0 auto 18px auto;
+      }
+
+      #life {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        display: inline-block;
+        opacity: 0.9;
+        margin-bottom: 22px;
+      }
+      #life .label {
+        opacity: 0.75;
+      }
+      #life .value {
+        font-weight: 700;
+      }
+
+      .nav {
+        margin-top: 10px;
+        font-size: 16px;
+      }
+      .nav a {
+        color: inherit;
+        text-decoration: underline;
+      }
+      .nav .sep {
+        padding: 0 8px;
+        opacity: 0.7;
+      }
     </style>
 
-    <script type="text/javascript">
-        // declare time zone formatting
-        let options = {
-            timeZone: 'Europe/Brussels',
-            hour: 'numeric',
-            minute: 'numeric',
-            second: 'numeric',
-        },
-            formatter = new Intl.DateTimeFormat([], options);
+    <script>
+      // SET
+      const BIRTHDATE = "2001-10-03T00:00:00+02:00";
+      const LIFE_EXPECTANCY_YEARS = 82;
 
-        // set time
-        setInterval(
-            () => {
-                document.querySelector("#time").innerText = formatter.format(new Date());
-            }
-            , 1000)
+      function yearsBetweenPrecise(from, to) {
+        const ms = to - from;
+        const avgYearMs = 365.2425 * 24 * 60 * 60 * 1000;
+        return ms / avgYearMs;
+      }
+
+      function fmt(n, decimals = 9) {
+        return Number(n).toFixed(decimals);
+      }
+
+      function updateLifeStats() {
+        const now = new Date();
+        const birth = new Date(BIRTHDATE);
+
+        const ageYears = yearsBetweenPrecise(birth, now);
+        const yearsLeft = Math.max(0, LIFE_EXPECTANCY_YEARS - ageYears);
+
+        const ageEl = document.getElementById("ageYears");
+        const leftEl = document.getElementById("yearsLeft");
+
+        if (ageEl) ageEl.textContent = fmt(ageYears, 9);
+        if (leftEl) leftEl.textContent = fmt(yearsLeft, 9);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        updateLifeStats();
+        setInterval(updateLifeStats, 100);
+      });
     </script>
-</head>
+  </head>
 
+  <body>
+    <div class="wrap">
+      <h1>MAICO MINNE</h1>
 
+      <img class="photo" src="assets/photos/ikmetvan1.jpg" alt="Maico" />
 
+      <div id="life">
+        <div>
+          <span class="label">I am </span
+          ><span class="value" id="ageYears">0.000000000</span
+          ><span class="label"> years old</span>
+        </div>
+        <div>
+          <span class="label">and probably have </span
+          ><span class="value" id="yearsLeft">0.000000000</span
+          ><span class="label"> years left</span>
+        </div>
+      </div>
 
-
-<p>
-    <font size="7"><i><b>MAICO MINNE</b></i></font> <br>
-    <br>
-    <img src="assets/photos/ikmetvan1.jpg" style="width:560px;"><br>
-    <br>
-    <span id=timezone>
-        <i>
-            <a href="https://24timezones.com/Belgium/time">TIME IN CROSS CHURCH CITY</a> - <span id="time">0:00
-                PM</span>
-            <a href="https://24timezones.com/time-zone/cest">CEST</a>
-        </i>
-    </span>
-    <br><br>
-
-    <a href="about.html">about</a> //
-    <a href="faq.html">faq</a> //
-    <a href="blog/index.html">blog</a> //
-    <a href="contact.html">contact</a>
-
-    <br>
-    <br>
-    </body>
-
+      <div class="nav">
+        <a href="about.html">about</a><span class="sep">//</span>
+        <a href="faq.html">faq</a><span class="sep">//</span>
+        <a href="blog/index.html">blog</a><span class="sep">//</span>
+        <a href="contact.html">contact</a>
+      </div>
+    </div>
+  </body>
 </html>
